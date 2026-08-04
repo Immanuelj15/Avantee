@@ -1,207 +1,449 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Link } from 'react-router-dom';
-import { FaArrowRight, FaTimes, FaDownload } from 'react-icons/fa';
-import { useTranslation } from '../../context/LanguageContext';
+import {
+  FaCheckCircle,
+  FaArrowRight,
+  FaDownload,
+  FaRecycle,
+  FaCogs,
+  FaShieldAlt,
+  FaGlobe,
+  FaIndustry,
+  FaLeaf,
+  FaTimes,
+} from 'react-icons/fa';
 import { SectionTitle } from '../Common/SectionTitle';
 import { GridBackground } from '../Common/GridBackground';
 import styles from './ProductsShowcaseSection.module.css';
 
 export const ProductsShowcaseSection = () => {
-  const { t } = useTranslation();
-  const [activeCategory, setActiveCategory] = useState('all');
-  const [selectedProduct, setSelectedProduct] = useState(null);
+  const [activeGalleryTab, setActiveGalleryTab] = useState('all');
+  const [lightboxItem, setLightboxItem] = useState(null);
 
-  const productsData = [
+  // 3 Full-Screen Showcase Products
+  const showcases = [
     {
-      id: 'f1',
-      category: 'fibres',
-      title: 'Eco-Staple PET Micro-Fibre',
-      badge: '100% Recycled',
-      image: 'https://images.unsplash.com/photo-1584100936595-c0654b55a2e2?q=80&w=800&auto=format&fit=crop',
-      denier: '1.2D to 15D',
-      cutLength: '32mm - 64mm',
-      blend: '100% Post-Consumer PET Chips',
-      applications: 'Non-woven, Spinning, Automotive Linings, Geotextiles',
-      certifications: 'GRS v4.0, OEKO-TEX Standard 100 Class I',
+      id: 'prod-fibres',
+      category: 'RECYCLED FIBRES',
+      title: 'Recycled Fibres',
+      description:
+        'Our recycled fibres are produced from carefully sourced pre-consumer textile waste using advanced mechanical recycling technology. Every fibre is processed for consistency, durability, and sustainability while reducing dependence on virgin cotton.',
+      features: [
+        'Premium Fibre Quality',
+        'Mechanically Recycled',
+        'Sustainable Raw Material',
+        'Colour Consistency',
+        'Reliable Supply',
+      ],
+      applications: [
+        'Open-End Spinning',
+        'Rotor Spinning',
+        'Blended Yarn',
+        'Knitted Textiles',
+        'Home Textiles',
+        'Industrial Textiles',
+      ],
+      ctaPrimaryText: 'Learn More',
+      ctaPrimaryLink: '/products',
+      ctaSecondaryText: 'Enquire Now',
+      ctaSecondaryLink: '/contact',
+      image:
+        'https://images.unsplash.com/photo-1584100936595-c0654b55a2e2?q=80&w=1000&auto=format&fit=crop',
+      layoutRight: false,
     },
     {
-      id: 'y1',
-      category: 'yarns',
-      title: 'Ring-Spun Recycled Cotton Yarn',
-      badge: 'High Tenacity',
-      image: 'https://images.unsplash.com/photo-1544441893-675973e31985?q=80&w=800&auto=format&fit=crop',
-      denier: 'Ne 10s to Ne 40s Single/Pied',
-      cutLength: 'Uniform Ring Spun Twist',
-      blend: '60% Recycled Cotton + 40% Recycled PET',
-      applications: 'Knitwear, Luxury Denim, Home Furnishings',
-      certifications: 'GRS Certified, Global Organic Textile Standard',
+      id: 'prod-yarns',
+      category: 'RECYCLED YARNS',
+      title: 'Recycled Yarns',
+      description:
+        'Our premium recycled yarns are manufactured using advanced spinning technology to deliver exceptional quality, strength, and performance across multiple textile applications.',
+      features: [
+        'Counts from Ne 2s to Ne 40s',
+        'High Strength',
+        'Smooth Finish',
+        'Consistent Quality',
+        'Sustainable Manufacturing',
+      ],
+      applications: [
+        'Fashion',
+        'T-Shirts',
+        'Knitted Fabrics',
+        'Woven Fabrics',
+        'Home Textiles',
+        'Industrial Products',
+      ],
+      ctaPrimaryText: 'Learn More',
+      ctaPrimaryLink: '/products',
+      ctaSecondaryText: 'Download Brochure',
+      ctaSecondaryLink: '/contact',
+      image:
+        'https://images.unsplash.com/photo-1544441893-675973e31985?q=80&w=1000&auto=format&fit=crop',
+      layoutRight: true,
     },
     {
-      id: 'y2',
-      category: 'yarns',
-      title: 'Technical Eco Filament Yarn',
-      badge: 'Waterless Dyed',
-      image: 'https://images.unsplash.com/photo-1606744888344-493238951221?q=80&w=800&auto=format&fit=crop',
-      denier: '50D / 72F to 300D / 144F',
-      cutLength: 'Continuous Dope Dyed Filament',
-      blend: '100% Recycled Ocean PET Polymer',
-      applications: 'Activewear, Sportswear, Outdoor Outerwear',
-      certifications: 'HIGG Index Verified, ISO 14001',
+      id: 'prod-fabrics',
+      category: 'RECYCLED FABRICS',
+      title: 'Recycled Fabrics',
+      description:
+        'Manufactured using our own recycled yarns, our fabrics combine premium quality with responsible manufacturing to create modern circular textile solutions.',
+      features: [
+        'Soft Finish',
+        'Premium Texture',
+        'Durable',
+        'Eco Friendly',
+        'Quality Controlled',
+      ],
+      applications: [
+        'Sportswear',
+        'Casual Wear',
+        'Fashion Apparel',
+        'Children Wear',
+        'Home Textiles',
+        'Accessories',
+      ],
+      ctaPrimaryText: 'Explore Fabrics',
+      ctaPrimaryLink: '/products',
+      ctaSecondaryText: 'Contact Team',
+      ctaSecondaryLink: '/contact',
+      image:
+        'https://images.unsplash.com/photo-1579546929518-9e396f3cc809?q=80&w=1000&auto=format&fit=crop',
+      layoutRight: false,
     },
-    {
-      id: 'fb1',
-      category: 'fabrics',
-      title: 'Avantee Shield Eco-Canvas',
-      badge: 'Zero-Water Dye',
-      image: 'https://images.unsplash.com/photo-1579546929518-9e396f3cc809?q=80&w=800&auto=format&fit=crop',
-      denier: '280 GSM to 450 GSM',
-      cutLength: '58/60 Inch Roll Width',
-      blend: '100% Upcycled Industrial Textile Blend',
-      applications: 'Heavy-Duty Bags, Tactical Outerwear, Upholstery',
-      certifications: 'GRS Traceable, OEKO-TEX 100',
-    }
   ];
 
-  const filteredProducts = activeCategory === 'all'
-    ? productsData
-    : productsData.filter(p => p.category === activeCategory);
+  // Why Choose Our Products - 6 Key Propositions
+  const whyProps = [
+    {
+      icon: <FaShieldAlt />,
+      title: '100% Quality Checked',
+      desc: 'Tested via online capacitive Uster analytical labs for tensile strength & purity.',
+    },
+    {
+      icon: <FaRecycle />,
+      title: 'Pre-Consumer Waste',
+      desc: 'Ethically recovered high-grade garment cutting waste diverted from landfills.',
+    },
+    {
+      icon: <FaCogs />,
+      title: 'Advanced Machinery',
+      desc: 'Swiss Rieter spinning frames and Trützschler carding units for micro-denier precision.',
+    },
+    {
+      icon: <FaGlobe />,
+      title: 'Global Supply',
+      desc: 'Exporting GRS-certified textile solutions across 45+ international destinations.',
+    },
+    {
+      icon: <FaIndustry />,
+      title: 'Modern Manufacturing',
+      desc: '500,000 sq. ft. eco-industrial complex operating on 98% water recycling.',
+    },
+    {
+      icon: <FaLeaf />,
+      title: 'Eco Friendly',
+      desc: 'Zero-water dope-dyeing masterbatch processes reducing environmental carbon footprint.',
+    },
+  ];
+
+  // Gallery items with categories
+  const galleryItems = [
+    {
+      id: 'g1',
+      category: 'fibres',
+      catLabel: 'FIBRES',
+      title: 'Purified Eco-Staple PET Fibres',
+      image:
+        'https://images.unsplash.com/photo-1584100936595-c0654b55a2e2?q=80&w=800&auto=format&fit=crop',
+    },
+    {
+      id: 'g2',
+      category: 'yarns',
+      catLabel: 'YARNS',
+      title: 'High-Tenacity Ring-Spun Cotton Yarns',
+      image:
+        'https://images.unsplash.com/photo-1544441893-675973e31985?q=80&w=800&auto=format&fit=crop',
+    },
+    {
+      id: 'g3',
+      category: 'yarns',
+      catLabel: 'YARNS',
+      title: 'Waterless Dope-Dyed Filament Spools',
+      image:
+        'https://images.unsplash.com/photo-1606744888344-493238951221?q=80&w=800&auto=format&fit=crop',
+    },
+    {
+      id: 'g4',
+      category: 'fabrics',
+      catLabel: 'FABRICS',
+      title: 'Upcycled Eco-Canvas Fabric Rolls',
+      image:
+        'https://images.unsplash.com/photo-1579546929518-9e396f3cc809?q=80&w=800&auto=format&fit=crop',
+    },
+    {
+      id: 'g5',
+      category: 'factory',
+      catLabel: 'FACTORY',
+      title: 'Rieter Automated Spinning Complex',
+      image:
+        'https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?q=80&w=800&auto=format&fit=crop',
+    },
+    {
+      id: 'g6',
+      category: 'quality',
+      catLabel: 'QUALITY',
+      title: 'Uster Spectrophotometric Quality Lab',
+      image:
+        'https://images.unsplash.com/photo-1582719508461-905c673771fd?q=80&w=800&auto=format&fit=crop',
+    },
+  ];
+
+  const filteredGallery =
+    activeGalleryTab === 'all'
+      ? galleryItems
+      : galleryItems.filter((g) => g.category === activeGalleryTab);
 
   return (
-    <section className={`section-padding ${styles.productsWrapper}`}>
+    <section className={styles.productsSectionWrapper}>
+      {/* Background Engineering Grid */}
       <GridBackground variant="dots" dark={false} opacity={0.08} />
 
-      <div className="container" style={{ position: 'relative', zIndex: 2 }}>
+      <div className="container" style={{ position: 'relative', zIndex: 3 }}>
+        {/* Section Header */}
         <SectionTitle
-          label={t('products.badge', 'Engineered Performance')}
-          title={t('products.title', 'Premium Recycled Yarns, Fibres & Fabrics')}
-          subtitle={t('products.subtitle')}
+          label="OUR PRODUCTS"
+          light={true}
+          title="Premium Circular Textile Solutions"
+          subtitle="From responsibly sourced textile waste to high-performance recycled materials, Avantee Industries delivers sustainable fibres, yarns, and fabrics through one integrated manufacturing ecosystem."
         />
 
-        {/* Filter Tabs */}
-        <div className={styles.filterTabRow} style={{ marginBottom: '40px' }}>
-            {['all', 'fibres', 'yarns', 'fabrics'].map((tab) => (
-              <button
-                key={tab}
-                className={`${styles.tabBtn} ${activeCategory === tab ? styles.activeTab : ''}`}
-                onClick={() => setActiveCategory(tab)}
+        {/* 3 FULL-SCREEN SHOWCASE PRODUCTS */}
+        {showcases.map((prod) => (
+          <motion.div
+            key={prod.id}
+            className={`${styles.showcaseBlock} ${
+              prod.layoutRight ? styles.reverseLayout : ''
+            }`}
+            initial={{ opacity: 0, y: 60 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: false, margin: '-100px' }}
+            transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
+          >
+            {/* Image Card */}
+            <div className={styles.showcaseImageCol}>
+              <div className={styles.showcaseImageCard}>
+                <span className={styles.categoryTagBadge}>{prod.category}</span>
+                <img
+                  src={prod.image}
+                  alt={prod.title}
+                  className={styles.showcaseImg}
+                  loading="lazy"
+                />
+              </div>
+            </div>
+
+            {/* Content Column */}
+            <div className={styles.showcaseContentCol}>
+              <h3 className={styles.prodTitle}>{prod.title}</h3>
+              <p className={styles.prodDesc}>{prod.description}</p>
+
+              {/* Features List */}
+              <div className={styles.featuresGrid}>
+                {prod.features.map((feat, i) => (
+                  <div key={i} className={styles.featureItem}>
+                    <FaCheckCircle className={styles.checkIcon} />
+                    <span>{feat}</span>
+                  </div>
+                ))}
+              </div>
+
+              {/* Applications Chips */}
+              <div className={styles.appSectionTitle}>Key Applications:</div>
+              <div className={styles.chipGroup}>
+                {prod.applications.map((app, i) => (
+                  <span key={i} className={styles.appChip}>
+                    {app}
+                  </span>
+                ))}
+              </div>
+
+              {/* Buttons */}
+              <div className={styles.ctaRow}>
+                <Link to={prod.ctaPrimaryLink} className="btn-primary">
+                  <span>{prod.ctaPrimaryText}</span>
+                  <FaArrowRight />
+                </Link>
+
+                <Link to={prod.ctaSecondaryLink} className="btn-secondary">
+                  <span>{prod.ctaSecondaryText}</span>
+                  {prod.ctaSecondaryText.includes('Brochure') && <FaDownload />}
+                </Link>
+              </div>
+            </div>
+          </motion.div>
+        ))}
+
+        {/* VALUE CHAIN FLOW COMPARISON CARD */}
+        <motion.div
+          className={styles.valueChainWrapper}
+          initial={{ opacity: 0, scale: 0.96 }}
+          whileInView={{ opacity: 1, scale: 1 }}
+          viewport={{ once: false }}
+          transition={{ duration: 0.6 }}
+        >
+          <SectionTitle
+            label="PRODUCT VALUE CHAIN"
+            title="Integrated Circular Product Transformation"
+            subtitle="Explore how our manufacturing ecosystem seamlessly converts raw staple fibres into high-tensile yarns and finished eco-fabrics."
+          />
+
+          <div className={styles.chainGrid}>
+            <div className={styles.chainCard}>
+              <span className={styles.chainStepNum}>STAGE 01</span>
+              <h4 className={styles.chainTitle}>Recycled Fibres</h4>
+              <p className={styles.chainDesc}>
+                Purified micro-denier staple fibres mechanically recovered from pre-consumer textile waste.
+              </p>
+            </div>
+
+            <div className={styles.chainArrowCol}>
+              <FaArrowRight />
+            </div>
+
+            <div className={styles.chainCard}>
+              <span className={styles.chainStepNum}>STAGE 02</span>
+              <h4 className={styles.chainTitle}>Recycled Yarns</h4>
+              <p className={styles.chainDesc}>
+                High-strength ring-spun & dope-dyed yarns engineered across Ne 10s to 40s count ranges.
+              </p>
+            </div>
+
+            <div className={styles.chainArrowCol}>
+              <FaArrowRight />
+            </div>
+
+            <div className={styles.chainCard}>
+              <span className={styles.chainStepNum}>STAGE 03</span>
+              <h4 className={styles.chainTitle}>Recycled Fabrics</h4>
+              <p className={styles.chainDesc}>
+                Durable, soft-finish woven Duck canvas and knitted fabrics ready for luxury apparel & technical uses.
+              </p>
+            </div>
+          </div>
+        </motion.div>
+
+        {/* WHY CHOOSE OUR PRODUCTS */}
+        <div className={styles.whyChooseWrapper}>
+          <SectionTitle
+            label="WHY CHOOSE AVANTEE"
+            light={true}
+            title="Engineered Excellence & Uncompromising Quality"
+          />
+
+          <div className={styles.whyGrid}>
+            {whyProps.map((w, idx) => (
+              <motion.div
+                key={w.title}
+                className={styles.whyCard}
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: false }}
+                transition={{ delay: idx * 0.1 }}
+                whileHover={{ y: -6 }}
               >
-                {tab === 'all' && t('products.tabAll', 'All Products')}
-                {tab === 'fibres' && t('products.tabFibres', 'Recycled Fibres')}
-                {tab === 'yarns' && t('products.tabYarns', 'Recycled Yarns')}
-                {tab === 'fabrics' && t('products.tabFabrics', 'Eco Fabrics')}
+                <div className={styles.whyIconBox}>{w.icon}</div>
+                <h4 className={styles.whyTitle}>{w.title}</h4>
+                <p className={styles.whyDesc}>{w.desc}</p>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+
+        {/* MANUFACTURING GALLERY & LIGHTBOX */}
+        <div>
+          <SectionTitle
+            label="MANUFACTURING GALLERY"
+            light={true}
+            title="Inside Our Production & Quality Facilities"
+          />
+
+          {/* Filter Tabs */}
+          <div className={styles.galleryFilterRow}>
+            {['all', 'fibres', 'yarns', 'fabrics', 'factory', 'quality'].map((cat) => (
+              <button
+                key={cat}
+                className={`${styles.galleryTab} ${
+                  activeGalleryTab === cat ? styles.activeGalleryTab : ''
+                }`}
+                onClick={() => setActiveGalleryTab(cat)}
+              >
+                {cat.toUpperCase()}
               </button>
             ))}
           </div>
 
-        {/* Product Cards Grid */}
-        <div className={styles.productsGrid}>
-          {filteredProducts.map((prod) => (
-            <motion.div
-              key={prod.id}
-              className={styles.productCard}
-              layout
-              initial={{ opacity: 0, scale: 0.9 }}
-              animate={{ opacity: 1, scale: 1 }}
-              exit={{ opacity: 0, scale: 0.9 }}
-              transition={{ duration: 0.4 }}
-              whileHover={{ y: -8 }}
-              data-cursor="hover"
-              data-cursor-text="Specs"
-              onClick={() => setSelectedProduct(prod)}
-            >
-              <div className={styles.imageContainer}>
-                <img src={prod.image} alt={prod.title} className={styles.cardImg} />
-                <span className={styles.tagBadge}>{prod.badge}</span>
-                <div className={styles.overlayGradient} />
-              </div>
-
-              <div className={styles.cardBody}>
-                <span className={styles.catLabel}>{prod.category.toUpperCase()}</span>
-                <h3 className={styles.cardTitle}>{prod.title}</h3>
-
-                <div className={styles.quickSpecs}>
-                  <div>
-                    <span className={styles.specKey}>Denier/Count:</span>
-                    <span className={styles.specVal}>{prod.denier}</span>
-                  </div>
-                  <div>
-                    <span className={styles.specKey}>Blend:</span>
-                    <span className={styles.specVal}>{prod.blend}</span>
-                  </div>
+          {/* Masonry Grid */}
+          <div className={styles.galleryMasonryGrid}>
+            {filteredGallery.map((item) => (
+              <motion.div
+                key={item.id}
+                className={styles.galleryItemCard}
+                layout
+                initial={{ opacity: 0, scale: 0.9 }}
+                animate={{ opacity: 1, scale: 1 }}
+                exit={{ opacity: 0, scale: 0.9 }}
+                whileHover={{ y: -6 }}
+                onClick={() => setLightboxItem(item)}
+              >
+                <img
+                  src={item.image}
+                  alt={item.title}
+                  className={styles.galleryItemImg}
+                  loading="lazy"
+                />
+                <div className={styles.galleryItemOverlay}>
+                  <span className={styles.galleryItemCat}>{item.catLabel}</span>
+                  <h4 className={styles.galleryItemTitle}>{item.title}</h4>
                 </div>
-
-                <button className={styles.specBtn}>
-                  <span>{t('products.viewDetails', 'Technical Specs')}</span>
-                  <FaArrowRight />
-                </button>
-              </div>
-            </motion.div>
-          ))}
+              </motion.div>
+            ))}
+          </div>
         </div>
       </div>
 
-      {/* Technical Spec Modal */}
+      {/* Lightbox Modal */}
       <AnimatePresence>
-        {selectedProduct && (
-          <div className={styles.modalOverlay}>
+        {lightboxItem && (
+          <div className={styles.lightboxOverlay}>
             <motion.div
-              className={styles.modalBackdrop}
-              onClick={() => setSelectedProduct(null)}
+              className={styles.lightboxBackdrop}
+              onClick={() => setLightboxItem(null)}
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
             />
             <motion.div
-              className={styles.specModal}
+              className={styles.lightboxContent}
               initial={{ opacity: 0, scale: 0.85, y: 20 }}
               animate={{ opacity: 1, scale: 1, y: 0 }}
               exit={{ opacity: 0, scale: 0.85, y: 20 }}
             >
-              <button className={styles.modalClose} onClick={() => setSelectedProduct(null)}>
+              <button
+                className={styles.lightboxClose}
+                onClick={() => setLightboxItem(null)}
+              >
                 <FaTimes />
               </button>
-
-              <div className={styles.modalGrid}>
-                <img src={selectedProduct.image} alt={selectedProduct.title} className={styles.modalImg} />
-                <div className={styles.modalContent}>
-                  <span className={styles.tagBadge}>{selectedProduct.badge}</span>
-                  <h3 className={styles.modalTitle}>{selectedProduct.title}</h3>
-
-                  <div className={styles.specTable}>
-                    <div className={styles.tableRow}>
-                      <strong>Denier / Count Range:</strong>
-                      <span>{selectedProduct.denier}</span>
-                    </div>
-                    <div className={styles.tableRow}>
-                      <strong>Composition & Blend:</strong>
-                      <span>{selectedProduct.blend}</span>
-                    </div>
-                    <div className={styles.tableRow}>
-                      <strong>Cut Length / Form:</strong>
-                      <span>{selectedProduct.cutLength}</span>
-                    </div>
-                    <div className={styles.tableRow}>
-                      <strong>Target Applications:</strong>
-                      <span>{selectedProduct.applications}</span>
-                    </div>
-                    <div className={styles.tableRow}>
-                      <strong>Certifications:</strong>
-                      <span>{selectedProduct.certifications}</span>
-                    </div>
-                  </div>
-
-                  <div className={styles.modalActionRow}>
-                    <Link to="/contact" className="btn-primary" onClick={() => setSelectedProduct(null)}>
-                      <span>Request Bulk Sample</span>
-                      <FaArrowRight />
-                    </Link>
-                    <button className="btn-gold" onClick={() => alert('Brochure PDF downloading...')}>
-                      <FaDownload />
-                      <span>{t('products.downloadBrochure', 'Download Brochure')}</span>
-                    </button>
-                  </div>
-                </div>
+              <img
+                src={lightboxItem.image}
+                alt={lightboxItem.title}
+                className={styles.lightboxImg}
+              />
+              <div className={styles.lightboxInfo}>
+                <span className={styles.galleryItemCat}>{lightboxItem.catLabel}</span>
+                <h3 style={{ fontSize: '1.4rem', fontWeight: 800, marginTop: '4px' }}>
+                  {lightboxItem.title}
+                </h3>
               </div>
             </motion.div>
           </div>
