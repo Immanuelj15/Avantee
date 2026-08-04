@@ -2,7 +2,7 @@ import React from 'react';
 import { HeroSection } from '../components/Home/HeroSection';
 import { MarqueeSection } from '../components/Home/MarqueeSection';
 import { AboutPreviewSection } from '../components/Home/AboutPreviewSection';
-import { ProcessTimelineSection } from '../components/Home/ProcessTimelineSection';
+import { RecyclingStorytellingSection } from '../components/Home/RecyclingStorytellingSection';
 import { ProductsShowcaseSection } from '../components/Home/ProductsShowcaseSection';
 import { InteractiveEarthSection } from '../components/Home/InteractiveEarthSection';
 import { GlobalNetworkMap } from '../components/Home/GlobalNetworkMap';
@@ -15,7 +15,7 @@ export const HomePage = () => {
       <HeroSection />
       <MarqueeSection />
       <AboutPreviewSection />
-      <ProcessTimelineSection />
+      <RecyclingStorytellingSection />
       <ProductsShowcaseSection />
       <InteractiveEarthSection />
       <GlobalNetworkMap />
