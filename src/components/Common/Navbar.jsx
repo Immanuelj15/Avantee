@@ -3,7 +3,7 @@ import { Link, useLocation } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
 import { FaBars, FaTimes, FaArrowRight, FaPhoneAlt } from 'react-icons/fa';
 import { useTranslation } from '../../context/LanguageContext';
-import { GlobeLanguageButton } from '../i18n/GlobeLanguageModal';
+import { NavbarLanguageSelector } from './NavbarLanguageSelector';
 import styles from './Navbar.module.css';
 
 import { AvanteeLogoMark } from './AvanteeLogo';
@@ -74,8 +74,8 @@ export const Navbar = () => {
 
         {/* Right CTA Actions */}
         <div className={styles.rightActions}>
-          {/* Animated Globe Language Switcher */}
-          <GlobeLanguageButton />
+          {/* Premium Horizontal Flag Language Switcher Bar */}
+          <NavbarLanguageSelector />
 
           {/* Let's Talk CTA */}
           <Link to="/contact" className="btn-primary">
@@ -114,6 +114,10 @@ export const Navbar = () => {
               >
                 <FaTimes />
               </button>
+            </div>
+
+            <div style={{ marginBottom: '20px' }}>
+              <NavbarLanguageSelector />
             </div>
 
             <div className={styles.mobileNavLinks}>
