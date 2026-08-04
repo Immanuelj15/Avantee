@@ -1,0 +1,52 @@
+:root {
+  /* Brand Primary Colors */
+  --color-deep-forest: #0E3B2E;
+  --color-emerald: #1B7F5B;
+  --color-mint: #DDF5E5;
+  --color-mint-glow: rgba(221, 245, 229, 0.4);
+  
+  /* Neutral Colors */
+  --color-white: #FFFFFF;
+  --color-offwhite: #F8FAF8;
+  --color-light-gray: #E7ECE8;
+  --color-charcoal: #202124;
+  --color-black: #111111;
+  --color-border-light: rgba(14, 59, 46, 0.1);
+  --color-border-dark: rgba(221, 245, 229, 0.15);
+
+  /* Gold Accent Gradient */
+  --gold-primary: #D9B65D;
+  --gold-secondary: #C59D3D;
+  --gradient-gold: linear-gradient(135deg, #D9B65D 0%, #C59D3D 100%);
+  --gradient-gold-text: linear-gradient(135deg, #F3E0AA 0%, #D9B65D 50%, #C59D3D 100%);
+  --gradient-emerald-forest: linear-gradient(135deg, #0E3B2E 0%, #1B7F5B 100%);
+  --gradient-glass: linear-gradient(135deg, rgba(255, 255, 255, 0.08) 0%, rgba(255, 255, 255, 0.02) 100%);
+
+  /* Typography */
+  --font-heading: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-body: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+
+  /* Shadows */
+  --shadow-sm: 0 4px 20px rgba(14, 59, 46, 0.06);
+  --shadow-md: 0 10px 30px rgba(14, 59, 46, 0.12);
+  --shadow-lg: 0 20px 50px rgba(14, 59, 46, 0.18);
+  --shadow-glow: 0 0 30px rgba(27, 127, 91, 0.35);
+  --shadow-gold-glow: 0 0 25px rgba(217, 182, 93, 0.4);
+
+  /* Border Radii */
+  --radius-xs: 6px;
+  --radius-sm: 12px;
+  --radius-md: 20px;
+  --radius-lg: 32px;
+  --radius-full: 9999px;
+
+  /* Transitions */
+  --transition-fast: cubic-bezier(0.16, 1, 0.3, 1) 0.25s;
+  --transition-smooth: cubic-bezier(0.16, 1, 0.3, 1) 0.5s;
+  --transition-bounce: cubic-bezier(0.34, 1.56, 0.64, 1) 0.6s;
+}
+
+[data-theme="dark"] {
+  --color-bg-primary: var(--color-deep-forest);
+  --color-text-primary: var(--color-white);
+}
