@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
+import { motion } from 'framer-motion';
 import styles from './Preloader.module.css';
 
 import { AvanteeLogoMark } from './AvanteeLogo';

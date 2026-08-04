@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Link } from 'react-router-dom';
-import { FaArrowRight, FaPlay, FaLeaf, FaRecycle, FaAward, FaGlobeAmericas, FaLayerGroup } from 'react-icons/fa';
+import { FaArrowRight, FaPlay, FaLeaf, FaRecycle, FaAward, FaGlobeAmericas } from 'react-icons/fa';
 import { useTranslation } from '../../context/LanguageContext';
 import { TypingText } from '../Common/TypingText';
 import { AnimatedCounter } from '../Common/AnimatedCounter';

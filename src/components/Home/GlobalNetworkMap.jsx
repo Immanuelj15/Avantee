@@ -1,12 +1,10 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { FaMapMarkerAlt, FaGlobe, FaPlane, FaCheckCircle, FaStar } from 'react-icons/fa';
-import { useTranslation } from '../../context/LanguageContext';
+import { FaCheckCircle, FaStar } from 'react-icons/fa';
 import { SectionTitle } from '../Common/SectionTitle';
 import styles from './GlobalNetworkMap.module.css';
 
 export const GlobalNetworkMap = () => {
-  const { t } = useTranslation();
   const [activePin, setActivePin] = useState(0);
 
   const exportHubs = [

@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Link } from 'react-router-dom';
-import { FaArrowRight, FaTags, FaLayerGroup, FaCheck, FaTimes, FaDownload } from 'react-icons/fa';
+import { FaArrowRight, FaTimes, FaDownload } from 'react-icons/fa';
 import { useTranslation } from '../../context/LanguageContext';
 import { SectionTitle } from '../Common/SectionTitle';
 import { GridBackground } from '../Common/GridBackground';

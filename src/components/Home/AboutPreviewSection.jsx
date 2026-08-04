@@ -1,7 +1,7 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
-import { FaCheckCircle, FaArrowRight, FaShieldAlt } from 'react-icons/fa';
+import { FaCheckCircle, FaArrowRight } from 'react-icons/fa';
 import { useTranslation } from '../../context/LanguageContext';
 import styles from './AboutPreviewSection.module.css';
 

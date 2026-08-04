@@ -1,6 +1,5 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { motion } from 'framer-motion';
 import { FaLinkedinIn, FaInstagram, FaTwitter, FaFacebookF, FaYoutube, FaWhatsapp, FaMapMarkerAlt, FaEnvelope, FaPhone } from 'react-icons/fa';
 import { useTranslation } from '../../context/LanguageContext';
 import styles from './Footer.module.css';

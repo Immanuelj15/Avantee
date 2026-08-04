@@ -8,7 +8,7 @@ export const AnimatedCounter = ({ value = '100', suffix = '', prefix = '', durat
   // Extract number and suffix if string like "50K+"
   const numericMatch = value.toString().match(/\d+(\.\d+)?/);
   const targetNum = numericMatch ? parseFloat(numericMatch[0]) : 0;
-  const unitSuffix = value.toString().replace(/[\d\.]/g, '') + suffix;
+  const unitSuffix = value.toString().replace(/[\d.]/g, '') + suffix;
 
   useEffect(() => {
     let startTimestamp = null;
