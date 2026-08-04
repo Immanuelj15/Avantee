@@ -19,22 +19,22 @@ export const HeroSection = () => {
       badge: '100% Certified Eco Material'
     },
     {
-      url: 'https://images.unsplash.com/photo-1606744888344-493238951221?q=80&w=1200&auto=format&fit=crop',
+      url: '/images/factory_spinning.svg',
       caption: 'Automated Rieter Spinning Lines',
       badge: 'Precision Swiss Engineering'
     },
     {
-      url: 'https://images.unsplash.com/photo-1544441893-675973e31985?q=80&w=1200&auto=format&fit=crop',
+      url: '/images/recycled_fibres.svg',
       caption: 'Ring-Spun Recycled Cotton Cones',
       badge: 'GRS Certified High Tenacity'
     },
     {
-      url: 'https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?q=80&w=1200&auto=format&fit=crop',
+      url: '/images/recycled_fabrics.svg',
       caption: 'Trützschler Micro-Fibre Extrusion',
       badge: 'Zero Water Pollution'
     },
     {
-      url: 'https://images.unsplash.com/photo-1579546929518-9e396f3cc809?q=80&w=1200&auto=format&fit=crop',
+      url: 'https://images.unsplash.com/photo-1544441893-675973e31985?q=80&w=1600&auto=format&fit=crop',
       caption: 'Technical Eco-Canvas Fabrics',
       badge: 'Heavy Duty Structural Weave'
     }
@@ -233,6 +233,7 @@ export const HeroSection = () => {
                 src={heroImages[currentImgIdx].url}
                 alt={heroImages[currentImgIdx].caption}
                 className={styles.heroImage}
+                onError={(e) => { e.currentTarget.src = '/images/factory_spinning.svg'; }}
                 initial={{ opacity: 0, scale: 1.08 }}
                 animate={{ opacity: 1, scale: 1 }}
                 exit={{ opacity: 0, scale: 0.96 }}

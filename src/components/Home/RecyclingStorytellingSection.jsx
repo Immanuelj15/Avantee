@@ -25,7 +25,7 @@ export const RecyclingStorytellingSection = () => {
       desc: t('process.step1Desc', 'High-quality garment cutting waste is collected from trusted manufacturing partners before it reaches consumers.'),
       badge: '100% Ethical Sourcing',
       icon: <FaRecycle />,
-      image: 'https://images.unsplash.com/photo-1544441893-675973e31985?q=80&w=800&auto=format&fit=crop',
+      image: '/images/recycled_fibres.svg',
     },
     {
       stepNum: '02',
@@ -33,7 +33,7 @@ export const RecyclingStorytellingSection = () => {
       desc: t('process.step2Desc', 'Every batch is carefully sorted based on colour, fibre composition, and quality to ensure consistent recycling results.'),
       badge: 'Shade & Composition Audit',
       icon: <FaFilter />,
-      image: 'https://images.unsplash.com/photo-1584100936595-c0654b55a2e2?q=80&w=800&auto=format&fit=crop',
+      image: '/images/recycled_fibres.svg',
     },
     {
       stepNum: '03',
@@ -41,7 +41,7 @@ export const RecyclingStorytellingSection = () => {
       desc: t('process.step3Desc', 'The textile waste is opened into reusable fibres using advanced mechanical recycling technology without unnecessary chemical processing.'),
       badge: 'Zero Chemical Solvents',
       icon: <FaCogs />,
-      image: 'https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?q=80&w=800&auto=format&fit=crop',
+      image: '/images/factory_spinning.svg',
     },
     {
       stepNum: '04',
@@ -49,7 +49,7 @@ export const RecyclingStorytellingSection = () => {
       desc: t('process.step4Desc', 'Recovered fibres are cleaned, aligned, and prepared for spinning to achieve uniform quality and reliable performance.'),
       badge: 'Micro-Denier Precision',
       icon: <FaWind />,
-      image: 'https://images.unsplash.com/photo-1606744888344-493238951221?q=80&w=800&auto=format&fit=crop',
+      image: '/images/recycled_yarns.svg',
     },
     {
       stepNum: '05',
@@ -57,7 +57,7 @@ export const RecyclingStorytellingSection = () => {
       desc: t('process.step5Desc', 'Prepared fibres are transformed into premium recycled yarns using advanced ring spinning technology across count ranges.'),
       badge: 'Swiss Rieter Technology',
       icon: <FaSync />,
-      image: 'https://images.unsplash.com/photo-1582719508461-905c673771fd?q=80&w=800&auto=format&fit=crop',
+      image: '/images/factory_spinning.svg',
     },
     {
       stepNum: '06',
@@ -65,7 +65,7 @@ export const RecyclingStorytellingSection = () => {
       desc: t('process.step6Desc', 'The recycled yarn is converted into knitted and woven fabrics suitable for apparel, home textiles, and industrial applications.'),
       badge: 'Waterless Dope Dyeing',
       icon: <FaProjectDiagram />,
-      image: 'https://images.unsplash.com/photo-1579546929518-9e396f3cc809?q=80&w=800&auto=format&fit=crop',
+      image: '/images/recycled_fabrics.svg',
     },
     {
       stepNum: '07',
@@ -73,7 +73,7 @@ export const RecyclingStorytellingSection = () => {
       desc: t('process.step7Desc', 'Every batch undergoes rigorous lab testing for tensile strength, color fastness, and purity before dispatch.'),
       badge: 'Uster Analytical Testing',
       icon: <FaMicroscope />,
-      image: 'https://images.unsplash.com/photo-1582719508461-905c673771fd?q=80&w=800&auto=format&fit=crop',
+      image: '/images/recycled_yarns.svg',
     },
     {
       stepNum: '08',
@@ -81,7 +81,7 @@ export const RecyclingStorytellingSection = () => {
       desc: t('process.step8Desc', 'Premium recycled fibres, yarns, and fabrics are supplied to leading fashion brands and industrial partners across 45+ countries.'),
       badge: '45+ Global Export Markets',
       icon: <FaGlobeAmericas />,
-      image: 'https://images.unsplash.com/photo-1578575437130-527eed3abbec?q=80&w=800&auto=format&fit=crop',
+      image: '/images/recycled_fabrics.svg',
     },
   ];
 
@@ -139,7 +139,12 @@ export const RecyclingStorytellingSection = () => {
                 {/* Visual Image Column */}
                 <div className={styles.visualCol}>
                   <div className={styles.visualCard}>
-                    <img src={step.image} alt={step.title} className={styles.stepImg} />
+                    <img
+                      src={step.image}
+                      alt={step.title}
+                      className={styles.stepImg}
+                      onError={(e) => { e.currentTarget.src = '/images/factory_spinning.svg'; }}
+                    />
                     <div className={styles.imgOverlay} />
                   </div>
                 </div>

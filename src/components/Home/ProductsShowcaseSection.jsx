@@ -48,8 +48,7 @@ export const ProductsShowcaseSection = () => {
       ctaPrimaryLink: '/products',
       ctaSecondaryText: 'Enquire Now',
       ctaSecondaryLink: '/contact',
-      image:
-        'https://images.unsplash.com/photo-1584100936595-c0654b55a2e2?q=80&w=1000&auto=format&fit=crop',
+      image: '/images/recycled_fibres.svg',
       layoutRight: false,
     },
     {
@@ -77,8 +76,7 @@ export const ProductsShowcaseSection = () => {
       ctaPrimaryLink: '/products',
       ctaSecondaryText: 'Download Brochure',
       ctaSecondaryLink: '/contact',
-      image:
-        'https://images.unsplash.com/photo-1544441893-675973e31985?q=80&w=1000&auto=format&fit=crop',
+      image: '/images/recycled_yarns.svg',
       layoutRight: true,
     },
     {
@@ -106,8 +104,7 @@ export const ProductsShowcaseSection = () => {
       ctaPrimaryLink: '/products',
       ctaSecondaryText: 'Contact Team',
       ctaSecondaryLink: '/contact',
-      image:
-        'https://images.unsplash.com/photo-1579546929518-9e396f3cc809?q=80&w=1000&auto=format&fit=crop',
+      image: '/images/recycled_fabrics.svg',
       layoutRight: false,
     },
   ];
@@ -153,48 +150,42 @@ export const ProductsShowcaseSection = () => {
       category: 'fibres',
       catLabel: 'FIBRES',
       title: 'Purified Eco-Staple PET Fibres',
-      image:
-        'https://images.unsplash.com/photo-1584100936595-c0654b55a2e2?q=80&w=800&auto=format&fit=crop',
+      image: '/images/recycled_fibres.svg',
     },
     {
       id: 'g2',
       category: 'yarns',
       catLabel: 'YARNS',
       title: 'High-Tenacity Ring-Spun Cotton Yarns',
-      image:
-        'https://images.unsplash.com/photo-1544441893-675973e31985?q=80&w=800&auto=format&fit=crop',
+      image: '/images/recycled_yarns.svg',
     },
     {
       id: 'g3',
       category: 'yarns',
       catLabel: 'YARNS',
       title: 'Waterless Dope-Dyed Filament Spools',
-      image:
-        'https://images.unsplash.com/photo-1606744888344-493238951221?q=80&w=800&auto=format&fit=crop',
+      image: '/images/factory_spinning.svg',
     },
     {
       id: 'g4',
       category: 'fabrics',
       catLabel: 'FABRICS',
       title: 'Upcycled Eco-Canvas Fabric Rolls',
-      image:
-        'https://images.unsplash.com/photo-1579546929518-9e396f3cc809?q=80&w=800&auto=format&fit=crop',
+      image: '/images/recycled_fabrics.svg',
     },
     {
       id: 'g5',
       category: 'factory',
       catLabel: 'FACTORY',
       title: 'Rieter Automated Spinning Complex',
-      image:
-        'https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?q=80&w=800&auto=format&fit=crop',
+      image: '/images/factory_spinning.svg',
     },
     {
       id: 'g6',
       category: 'quality',
       catLabel: 'QUALITY',
       title: 'Uster Spectrophotometric Quality Lab',
-      image:
-        'https://images.unsplash.com/photo-1582719508461-905c673771fd?q=80&w=800&auto=format&fit=crop',
+      image: '/images/recycled_yarns.svg',
     },
   ];
 
