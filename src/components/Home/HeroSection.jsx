@@ -14,27 +14,27 @@ export const HeroSection = () => {
 
   const heroImages = [
     {
-      url: 'https://images.unsplash.com/photo-1584100936595-c0654b55a2e2?q=80&w=1200&auto=format&fit=crop',
-      caption: 'Recycled Sustainable Yarn Threads',
+      url: 'https://images.unsplash.com/photo-1544441893-675973e31985?q=80&w=1600&auto=format&fit=crop',
+      caption: 'Ring-Spun Recycled Cotton Cones',
       badge: '100% Certified Eco Material'
     },
     {
-      url: '/images/factory_spinning.svg',
+      url: 'https://images.unsplash.com/photo-1606744888344-493238951221?q=80&w=1600&auto=format&fit=crop',
       caption: 'Automated Rieter Spinning Lines',
       badge: 'Precision Swiss Engineering'
     },
     {
-      url: '/images/recycled_fibres.svg',
-      caption: 'Ring-Spun Recycled Cotton Cones',
+      url: 'https://images.unsplash.com/photo-1584100936595-c0654b55a2e2?q=80&w=1600&auto=format&fit=crop',
+      caption: 'Eco-Staple PET Micro-Fibres',
       badge: 'GRS Certified High Tenacity'
     },
     {
-      url: '/images/recycled_fabrics.svg',
+      url: 'https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?q=80&w=1600&auto=format&fit=crop',
       caption: 'Trützschler Micro-Fibre Extrusion',
       badge: 'Zero Water Pollution'
     },
     {
-      url: 'https://images.unsplash.com/photo-1544441893-675973e31985?q=80&w=1600&auto=format&fit=crop',
+      url: 'https://images.unsplash.com/photo-1579546929518-9e396f3cc809?q=80&w=1600&auto=format&fit=crop',
       caption: 'Technical Eco-Canvas Fabrics',
       badge: 'Heavy Duty Structural Weave'
     }
