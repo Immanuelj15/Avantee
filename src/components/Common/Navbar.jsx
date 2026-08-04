@@ -117,7 +117,7 @@ export const Navbar = () => {
             </div>
 
             <div style={{ marginBottom: '20px' }}>
-              <NavbarLanguageSelector />
+              <NavbarLanguageSelector isMobile={true} />
             </div>
 
             <div className={styles.mobileNavLinks}>
