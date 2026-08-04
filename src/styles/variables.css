@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap');
+
 :root {
   /* Brand Primary Colors */
   --color-deep-forest: #0E3B2E;
@@ -7,12 +9,12 @@
   
   /* Neutral Colors */
   --color-white: #FFFFFF;
-  --color-offwhite: #F8FAF8;
+  --color-offwhite: #FAFBFA;
   --color-light-gray: #E7ECE8;
-  --color-charcoal: #202124;
-  --color-black: #111111;
-  --color-border-light: rgba(14, 59, 46, 0.1);
-  --color-border-dark: rgba(221, 245, 229, 0.15);
+  --color-charcoal: #1C2522;
+  --color-black: #0B1411;
+  --color-border-light: rgba(14, 59, 46, 0.12);
+  --color-border-dark: rgba(221, 245, 229, 0.18);
 
   /* Gold Accent Gradient */
   --gold-primary: #D9B65D;
@@ -20,11 +22,16 @@
   --gradient-gold: linear-gradient(135deg, #D9B65D 0%, #C59D3D 100%);
   --gradient-gold-text: linear-gradient(135deg, #F3E0AA 0%, #D9B65D 50%, #C59D3D 100%);
   --gradient-emerald-forest: linear-gradient(135deg, #0E3B2E 0%, #1B7F5B 100%);
-  --gradient-glass: linear-gradient(135deg, rgba(255, 255, 255, 0.08) 0%, rgba(255, 255, 255, 0.02) 100%);
+  --gradient-glass: linear-gradient(135deg, rgba(255, 255, 255, 0.12) 0%, rgba(255, 255, 255, 0.03) 100%);
 
   /* Typography */
   --font-heading: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
   --font-body: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+
+  /* Spacing Tokens */
+  --space-hero: 160px;
+  --space-section-lg: 120px;
+  --space-section-sm: 96px;
 
   /* Shadows */
   --shadow-sm: 0 4px 20px rgba(14, 59, 46, 0.06);
