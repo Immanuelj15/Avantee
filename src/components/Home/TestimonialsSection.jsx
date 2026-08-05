@@ -1,4 +1,5 @@
 import React from 'react';
+import { motion } from 'framer-motion';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Autoplay, Pagination } from 'swiper/modules';
 import { FaQuoteLeft, FaStar } from 'react-icons/fa';
@@ -37,13 +38,19 @@ export const TestimonialsSection = () => {
   return (
     <section className={`section-padding ${styles.testimonialsWrapper}`}>
       <div className="container">
-        <div className={styles.sectionHeader}>
+        <motion.div
+          className={styles.sectionHeader}
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: false, amount: 0.2 }}
+          transition={{ duration: 0.6 }}
+        >
           <span className={styles.badge}>Client Testimonials</span>
           <h2 className={styles.title}>Trusted by Global Textile Visionaries</h2>
           <p className={styles.subtitle}>
             Hear how our closed-loop recycled yarns and eco-fibres empower leading international brands.
           </p>
-        </div>
+        </motion.div>
 
         <div className={styles.swiperContainer}>
           <Swiper

@@ -31,7 +31,7 @@ export const InteractiveEarthSection = () => {
             className={styles.earthSphereContainer}
             initial={{ opacity: 0, scale: 0.8 }}
             whileInView={{ opacity: 1, scale: 1 }}
-            viewport={{ once: true }}
+            viewport={{ once: false, amount: 0.2 }}
             transition={{ duration: 1 }}
           >
             <div className={styles.earthOrb}>
@@ -54,7 +54,7 @@ export const InteractiveEarthSection = () => {
               className={styles.statCard}
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
+              viewport={{ once: false, amount: 0.2 }}
               transition={{ delay: 0.1 }}
             >
               <div className={styles.iconWrapper}><FaTint /></div>
@@ -68,7 +68,7 @@ export const InteractiveEarthSection = () => {
               className={styles.statCard}
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
+              viewport={{ once: false, amount: 0.2 }}
               transition={{ delay: 0.2 }}
             >
               <div className={styles.iconWrapperGold}><FaCloud /></div>
@@ -82,7 +82,7 @@ export const InteractiveEarthSection = () => {
               className={styles.statCard}
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
+              viewport={{ once: false, amount: 0.2 }}
               transition={{ delay: 0.3 }}
             >
               <div className={styles.iconWrapper}><FaBolt /></div>
@@ -96,7 +96,7 @@ export const InteractiveEarthSection = () => {
               className={styles.statCard}
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
+              viewport={{ once: false, amount: 0.2 }}
               transition={{ delay: 0.4 }}
             >
               <div className={styles.iconWrapperGold}><FaRecycle /></div>
