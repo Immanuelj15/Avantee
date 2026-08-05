@@ -8,8 +8,8 @@
 
 .infinityGrid {
   display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 60px;
+  grid-template-columns: 1fr 1.1fr;
+  gap: 50px;
   align-items: center;
 }
 
@@ -75,18 +75,16 @@
   font-weight: 600;
 }
 
-/* Infinity SVG Container */
-.infinitySvgContainer {
+/* Infinity Diagram Container */
+.infinitySvgCard {
   position: relative;
   width: 100%;
-  max-width: 580px;
-  margin: 0 auto;
-  background: rgba(255, 255, 255, 0.03);
-  backdrop-filter: blur(16px);
-  border: 1px solid rgba(217, 182, 93, 0.3);
+  background: rgba(255, 255, 255, 0.04);
+  backdrop-filter: blur(20px);
+  border: 1.5px solid rgba(217, 182, 93, 0.35);
   border-radius: var(--radius-lg);
-  padding: 40px 20px;
-  box-shadow: 0 25px 60px rgba(0, 0, 0, 0.5), 0 0 30px rgba(217, 182, 93, 0.2);
+  padding: 32px 20px 24px;
+  box-shadow: 0 25px 60px rgba(0, 0, 0, 0.6), 0 0 35px rgba(217, 182, 93, 0.2);
 }
 
 .infinitySvg {
@@ -95,79 +93,108 @@
   overflow: visible;
 }
 
-.loopTrack {
+/* Ribbon Tracks */
+.ribbonBackTrack {
   fill: none;
-  stroke: rgba(221, 245, 229, 0.15);
-  stroke-width: 12;
+  stroke: #1B7F5B;
+  stroke-width: 36;
   stroke-linecap: round;
+  stroke-linejoin: round;
 }
 
-.loopActivePath {
+.ribbonBorderTrack {
   fill: none;
-  stroke: url(#goldEmeraldGrad);
-  stroke-width: 12;
+  stroke: var(--gold-primary);
+  stroke-width: 40;
   stroke-linecap: round;
-  stroke-dasharray: 20 10;
-  animation: dash 12s linear infinite;
+  stroke-linejoin: round;
+  opacity: 0.3;
 }
 
-@keyframes dash {
+.ribbonGradientTrack {
+  fill: none;
+  stroke: url(#infinityRibbonGradient);
+  stroke-width: 32;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.flowDashAnimation {
+  fill: none;
+  stroke: #DDF5E5;
+  stroke-width: 3;
+  stroke-dasharray: 12 8;
+  animation: flowDash 15s linear infinite;
+  opacity: 0.8;
+}
+
+@keyframes flowDash {
   to {
-    stroke-dashoffset: -300;
+    stroke-dashoffset: -400;
   }
 }
 
+/* Nodes & Icons */
 .nodeGroup {
   cursor: pointer;
   transition: transform 0.3s ease;
 }
 
 .nodeGroup:hover {
-  transform: scale(1.15);
+  transform: scale(1.18);
 }
 
-.nodeCircle {
+.nodeBadgeCircle {
   fill: #061A14;
   stroke: var(--gold-primary);
-  stroke-width: 3.5;
+  stroke-width: 3;
+  box-shadow: 0 0 15px rgba(217, 182, 93, 0.6);
   transition: all 0.3s ease;
-  filter: drop-shadow(0 0 10px rgba(217, 182, 93, 0.5));
 }
 
-.nodeGroup:hover .nodeCircle {
+.nodeGroup:hover .nodeBadgeCircle {
   fill: var(--color-emerald);
   stroke: #FFFFFF;
-  filter: drop-shadow(0 0 20px rgba(217, 182, 93, 0.9));
+  filter: drop-shadow(0 0 15px rgba(217, 182, 93, 0.9));
 }
 
-.nodeLabel {
+.nodeIcon {
+  fill: var(--gold-primary);
+  transition: fill 0.3s ease;
+}
+
+.nodeGroup:hover .nodeIcon {
+  fill: #FFFFFF;
+}
+
+.nodeLabelText {
   font-family: var(--font-heading);
   font-size: 11px;
   font-weight: 800;
   fill: #FFFFFF;
   text-anchor: middle;
-  letter-spacing: 0.05em;
+  letter-spacing: 0.04em;
   pointer-events: none;
 }
 
-.activeTooltip {
-  margin-top: 20px;
-  background: rgba(6, 26, 20, 0.95);
+.activeNodeCard {
+  margin-top: 16px;
+  background: rgba(6, 26, 20, 0.92);
   border: 1px solid var(--gold-primary);
   border-radius: var(--radius-md);
   padding: 16px 20px;
   text-align: center;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
 }
 
-.tooltipTitle {
+.cardTitle {
   font-size: 1.1rem;
   font-weight: 800;
   color: var(--gold-primary);
   margin-bottom: 4px;
 }
 
-.tooltipDesc {
+.cardDesc {
   font-size: 0.85rem;
   color: var(--color-mint);
 }
