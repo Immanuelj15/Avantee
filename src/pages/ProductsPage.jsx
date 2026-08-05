@@ -62,10 +62,34 @@ export const ProductsPage = () => {
       tag: 'Heavy Duty Structural Weave',
       denier: '320 GSM Heavy Duck Canvas',
       cut: 'Width 58 / 60 Inches',
-      image: 'https://images.unsplash.com/photo-1579546929518-9e396f3cc809?q=80&w=800&auto=format&fit=crop',
+      image: '/images/fabric_stack_earth.png',
       desc: 'Durable, high-abrasion fabric woven from 100% upcycled industrial textile waste with water-repellent finishing.',
       applications: ['Workwear Jackets', 'Heavy Tents & Tarpaulins', 'Commercial Upholstery', 'Eco Tote Bags'],
       specs: { TensileStrength: '1200 N Warp / 950 N Weft', TearResistance: '85 N', AbrasionCycles: '> 50,000 Rubs', WaterRepellency: 'Grade 90' }
+    },
+    {
+      id: 'p5',
+      category: 'fabrics',
+      name: 'Dark Multi-Texture Knitted & Check Fabrics',
+      tag: 'Premium Suiting & Apparel Grade',
+      denier: '240 GSM Knitted & Pinstripe Weave',
+      cut: 'Width 58 / 60 Inches',
+      image: '/images/fabric_stack_dark.png',
+      desc: 'Luxurious dark-toned circular knit and structured check fabrics woven for high-end sustainable tailoring and winterwear.',
+      applications: ['Knitting Garments', 'Winter Wear Coats', 'Formal Woven Apparel', 'Fashion Accessories'],
+      specs: { TensileStrength: '1100 N Warp / 900 N Weft', TearResistance: '80 N', ColorFastness: 'Grade 4.5+', Pilling: 'Grade 4-5' }
+    },
+    {
+      id: 'p6',
+      category: 'fabrics',
+      name: 'Linen & Sustainable Denim Upcycled Rolls',
+      tag: 'Soft Finish Eco-Linen Weave',
+      denier: '280 GSM Slub Denim & Linen Blend',
+      cut: 'Width 60 Inches',
+      image: '/images/fabric_stack_linen.png',
+      desc: 'Breathable, ultra-soft eco-linen and upcycled denim fabrics crafted for lightweight casual garments and tote bags.',
+      applications: ['Summer Apparel', 'Eco Denim Jeans', 'Home Textiles & Bedding', 'Reusable Tote Bags'],
+      specs: { SoftnessIndex: 'Ultra Soft', MoistureRegain: '8.5%', Shrinkage: '< 1.8%', TearResistance: '78 N' }
     }
   ];
 

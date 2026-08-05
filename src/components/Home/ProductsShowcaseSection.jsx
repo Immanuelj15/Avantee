@@ -106,8 +106,7 @@ export const ProductsShowcaseSection = () => {
       ctaPrimaryLink: '/products',
       ctaSecondaryText: 'Contact Team',
       ctaSecondaryLink: '/contact',
-      image:
-        'https://images.unsplash.com/photo-1579546929518-9e396f3cc809?q=80&w=1000&auto=format&fit=crop',
+      image: '/images/fabric_stack_earth.png',
       layoutRight: false,
     },
   ];
@@ -146,7 +145,7 @@ export const ProductsShowcaseSection = () => {
     },
   ];
 
-  // Gallery items with categories
+  // Gallery items with categories including uploaded fabric photos
   const galleryItems = [
     {
       id: 'g1',
@@ -176,9 +175,8 @@ export const ProductsShowcaseSection = () => {
       id: 'g4',
       category: 'fabrics',
       catLabel: 'FABRICS',
-      title: 'Upcycled Eco-Canvas Fabric Rolls',
-      image:
-        'https://images.unsplash.com/photo-1579546929518-9e396f3cc809?q=80&w=800&auto=format&fit=crop',
+      title: 'Earth-Toned Upcycled Eco-Canvas Rolls',
+      image: '/images/fabric_stack_earth.png',
     },
     {
       id: 'g5',
@@ -195,6 +193,20 @@ export const ProductsShowcaseSection = () => {
       title: 'Uster Spectrophotometric Quality Lab',
       image:
         'https://images.unsplash.com/photo-1582719508461-905c673771fd?q=80&w=800&auto=format&fit=crop',
+    },
+    {
+      id: 'g7',
+      category: 'fabrics',
+      catLabel: 'FABRICS',
+      title: 'Dark Multi-Texture Knitted & Check Fabrics',
+      image: '/images/fabric_stack_dark.png',
+    },
+    {
+      id: 'g8',
+      category: 'fabrics',
+      catLabel: 'FABRICS',
+      title: 'Linen & Sustainable Denim Upcycled Rolls',
+      image: '/images/fabric_stack_linen.png',
     },
   ];
 
@@ -282,6 +294,22 @@ export const ProductsShowcaseSection = () => {
             </div>
           </motion.div>
         ))}
+
+        {/* WHERE OUR FABRICS ARE USED - FEATURE BANNER (IMAGE 4) */}
+        <motion.div
+          className={styles.fabricUsageBannerCard}
+          initial={{ opacity: 0, y: 40 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: false, amount: 0.2 }}
+          transition={{ duration: 0.8 }}
+        >
+          <img
+            src="/images/fabric_usage_banner.png"
+            alt="Where Our Fabrics Are Used - Knitting Garment, Winter Wear, Woven Apparel, Home Textile, Tote Bags, Other Accessories"
+            className={styles.fabricUsageImg}
+            loading="lazy"
+          />
+        </motion.div>
 
         {/* VALUE CHAIN FLOW COMPARISON CARD */}
         <motion.div
