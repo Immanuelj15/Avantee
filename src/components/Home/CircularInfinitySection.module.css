@@ -1,0 +1,173 @@
+.infinitySectionWrapper {
+  position: relative;
+  background: var(--color-deep-forest);
+  color: var(--color-white);
+  padding: 120px 0;
+  overflow: hidden;
+}
+
+.infinityGrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 60px;
+  align-items: center;
+}
+
+@media (max-width: 1024px) {
+  .infinityGrid {
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+}
+
+.leftContentCol {
+  display: flex;
+  flex-direction: column;
+}
+
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 16px;
+  border-radius: var(--radius-full);
+  background: rgba(217, 182, 93, 0.15);
+  border: 1px solid var(--gold-primary);
+  color: var(--gold-primary);
+  font-size: 0.8rem;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  margin-bottom: 20px;
+  width: fit-content;
+}
+
+.title {
+  font-size: 2.6rem;
+  font-weight: 800;
+  color: var(--color-white);
+  line-height: 1.15;
+  margin-bottom: 20px;
+}
+
+.desc {
+  font-size: 1.05rem;
+  color: var(--color-mint);
+  opacity: 0.88;
+  line-height: 1.7;
+  margin-bottom: 32px;
+}
+
+.featureChips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-bottom: 36px;
+}
+
+.chip {
+  padding: 8px 16px;
+  border-radius: var(--radius-full);
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(221, 245, 229, 0.15);
+  color: var(--color-white);
+  font-size: 0.85rem;
+  font-weight: 600;
+}
+
+/* Infinity SVG Container */
+.infinitySvgContainer {
+  position: relative;
+  width: 100%;
+  max-width: 580px;
+  margin: 0 auto;
+  background: rgba(255, 255, 255, 0.03);
+  backdrop-filter: blur(16px);
+  border: 1px solid rgba(217, 182, 93, 0.3);
+  border-radius: var(--radius-lg);
+  padding: 40px 20px;
+  box-shadow: 0 25px 60px rgba(0, 0, 0, 0.5), 0 0 30px rgba(217, 182, 93, 0.2);
+}
+
+.infinitySvg {
+  width: 100%;
+  height: auto;
+  overflow: visible;
+}
+
+.loopTrack {
+  fill: none;
+  stroke: rgba(221, 245, 229, 0.15);
+  stroke-width: 12;
+  stroke-linecap: round;
+}
+
+.loopActivePath {
+  fill: none;
+  stroke: url(#goldEmeraldGrad);
+  stroke-width: 12;
+  stroke-linecap: round;
+  stroke-dasharray: 20 10;
+  animation: dash 12s linear infinite;
+}
+
+@keyframes dash {
+  to {
+    stroke-dashoffset: -300;
+  }
+}
+
+.nodeGroup {
+  cursor: pointer;
+  transition: transform 0.3s ease;
+}
+
+.nodeGroup:hover {
+  transform: scale(1.15);
+}
+
+.nodeCircle {
+  fill: #061A14;
+  stroke: var(--gold-primary);
+  stroke-width: 3.5;
+  transition: all 0.3s ease;
+  filter: drop-shadow(0 0 10px rgba(217, 182, 93, 0.5));
+}
+
+.nodeGroup:hover .nodeCircle {
+  fill: var(--color-emerald);
+  stroke: #FFFFFF;
+  filter: drop-shadow(0 0 20px rgba(217, 182, 93, 0.9));
+}
+
+.nodeLabel {
+  font-family: var(--font-heading);
+  font-size: 11px;
+  font-weight: 800;
+  fill: #FFFFFF;
+  text-anchor: middle;
+  letter-spacing: 0.05em;
+  pointer-events: none;
+}
+
+.activeTooltip {
+  margin-top: 20px;
+  background: rgba(6, 26, 20, 0.95);
+  border: 1px solid var(--gold-primary);
+  border-radius: var(--radius-md);
+  padding: 16px 20px;
+  text-align: center;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6);
+}
+
+.tooltipTitle {
+  font-size: 1.1rem;
+  font-weight: 800;
+  color: var(--gold-primary);
+  margin-bottom: 4px;
+}
+
+.tooltipDesc {
+  font-size: 0.85rem;
+  color: var(--color-mint);
+}
