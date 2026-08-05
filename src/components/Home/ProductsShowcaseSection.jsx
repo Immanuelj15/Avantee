@@ -48,8 +48,7 @@ export const ProductsShowcaseSection = () => {
       ctaPrimaryLink: '/products',
       ctaSecondaryText: 'Enquire Now',
       ctaSecondaryLink: '/contact',
-      image:
-        'https://images.unsplash.com/photo-1584100936595-c0654b55a2e2?q=80&w=1000&auto=format&fit=crop',
+      image: '/images/yarn_balls_pastel.jpg',
       layoutRight: false,
     },
     {
@@ -57,28 +56,26 @@ export const ProductsShowcaseSection = () => {
       category: 'RECYCLED YARNS',
       title: 'Recycled Yarns',
       description:
-        'Our premium recycled yarns are manufactured using advanced spinning technology to deliver exceptional quality, strength, and performance across multiple textile applications.',
+        'Engineered for maximum tensile strength and zero shade variation, our GRS-certified yarns empower sustainable knitting and weaving applications globally.',
       features: [
-        'Counts from Ne 2s to Ne 40s',
-        'High Strength',
-        'Smooth Finish',
+        'High Tenacity',
         'Consistent Quality',
-        'Sustainable Manufacturing',
+        'Zero Water Dyeing',
+        'GRS Certified',
+        'OEKO-TEX 100',
       ],
       applications: [
-        'Fashion',
-        'T-Shirts',
-        'Knitted Fabrics',
-        'Woven Fabrics',
-        'Home Textiles',
-        'Industrial Products',
+        'Knitting Apparel',
+        'Woven Denim',
+        'Home Furnishings',
+        'Socks & Hosiery',
+        'Industrial Weaving',
       ],
-      ctaPrimaryText: 'Learn More',
+      ctaPrimaryText: 'Explore Yarns',
       ctaPrimaryLink: '/products',
-      ctaSecondaryText: 'Download Brochure',
+      ctaSecondaryText: 'Download Spec Sheet',
       ctaSecondaryLink: '/contact',
-      image:
-        'https://images.unsplash.com/photo-1544441893-675973e31985?q=80&w=1000&auto=format&fit=crop',
+      image: '/images/yarn_cones_spools.png',
       layoutRight: true,
     },
     {
@@ -151,25 +148,22 @@ export const ProductsShowcaseSection = () => {
       id: 'g1',
       category: 'fibres',
       catLabel: 'FIBRES',
-      title: 'Purified Eco-Staple PET Fibres',
-      image:
-        'https://images.unsplash.com/photo-1584100936595-c0654b55a2e2?q=80&w=800&auto=format&fit=crop',
+      title: 'Purified Organic Recycled Yarn Balls',
+      image: '/images/yarn_balls_pastel.jpg',
     },
     {
       id: 'g2',
       category: 'yarns',
       catLabel: 'YARNS',
-      title: 'High-Tenacity Ring-Spun Cotton Yarns',
-      image:
-        'https://images.unsplash.com/photo-1544441893-675973e31985?q=80&w=800&auto=format&fit=crop',
+      title: 'Multi-Color Cone Spools of Recycled Yarn',
+      image: '/images/yarn_cones_spools.png',
     },
     {
       id: 'g3',
       category: 'yarns',
       catLabel: 'YARNS',
-      title: 'Waterless Dope-Dyed Filament Spools',
-      image:
-        'https://images.unsplash.com/photo-1606744888344-493238951221?q=80&w=800&auto=format&fit=crop',
+      title: 'High-Tenacity Cotton & Polyester Yarn Rows',
+      image: '/images/yarn_cones_rows.png',
     },
     {
       id: 'g4',
@@ -207,6 +201,13 @@ export const ProductsShowcaseSection = () => {
       catLabel: 'FABRICS',
       title: 'Linen & Sustainable Denim Upcycled Rolls',
       image: '/images/fabric_stack_linen.png',
+    },
+    {
+      id: 'g9',
+      category: 'yarns',
+      catLabel: 'YARNS',
+      title: 'Warm Tone Thread Cones in Craft Bowl',
+      image: '/images/yarn_cones_bowl.png',
     },
   ];
 

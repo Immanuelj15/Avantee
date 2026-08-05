@@ -14,29 +14,29 @@ export const HeroSection = () => {
 
   const heroImages = [
     {
-      url: 'https://images.unsplash.com/photo-1544441893-675973e31985?q=80&w=1600&auto=format&fit=crop',
-      caption: 'Ring-Spun Recycled Cotton Cones',
-      badge: '100% Certified Eco Material'
+      url: '/images/yarn_cones_spools.png',
+      caption: 'Multi-Color Cone Spools of Recycled Yarn',
+      badge: '100% GRS Certified Eco Material'
     },
     {
-      url: 'https://images.unsplash.com/photo-1606744888344-493238951221?q=80&w=1600&auto=format&fit=crop',
-      caption: 'Automated Rieter Spinning Lines',
-      badge: 'Precision Swiss Engineering'
+      url: '/images/yarn_cones_rows.png',
+      caption: 'Ring-Spun High-Tenacity Recycled Cotton Cones',
+      badge: 'Precision Swiss Rieter Lines'
     },
     {
-      url: 'https://images.unsplash.com/photo-1584100936595-c0654b55a2e2?q=80&w=1600&auto=format&fit=crop',
-      caption: 'Eco-Staple PET Micro-Fibres',
-      badge: 'GRS Certified High Tenacity'
-    },
-    {
-      url: 'https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?q=80&w=1600&auto=format&fit=crop',
-      caption: 'Trützschler Micro-Fibre Extrusion',
-      badge: 'Zero Water Pollution'
-    },
-    {
-      url: 'https://images.unsplash.com/photo-1579546929518-9e396f3cc809?q=80&w=1600&auto=format&fit=crop',
-      caption: 'Technical Eco-Canvas Fabrics',
+      url: '/images/fabric_stack_earth.png',
+      caption: 'Earth-Toned Upcycled Eco-Canvas Fabric Rolls',
       badge: 'Heavy Duty Structural Weave'
+    },
+    {
+      url: '/images/yarn_balls_pastel.jpg',
+      caption: 'Organic Micro-Denier Staple Yarn Balls',
+      badge: 'Zero Chemical Solvents'
+    },
+    {
+      url: '/images/yarn_cones_bowl.png',
+      caption: 'Warm Tone Thread Cones in Craft Bowl',
+      badge: 'OEKO-TEX Standard 100'
     }
   ];
 

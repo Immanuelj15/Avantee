@@ -22,16 +22,16 @@ export const AboutPreviewSection = () => {
           >
             <div className={styles.primaryImgBox}>
               <img
-                src="https://images.unsplash.com/photo-1606744888344-493238951221?q=80&w=1000&auto=format&fit=crop"
-                alt="High Tech Textile Machinery"
+                src="/images/yarn_cones_rows.png"
+                alt="High Tenacity Recycled Cotton Yarn Rows"
                 className={styles.primaryImg}
               />
             </div>
 
             <div className={styles.secondaryImgBox}>
               <img
-                src="https://images.unsplash.com/photo-1544441893-675973e31985?q=80&w=800&auto=format&fit=crop"
-                alt="Recycled Cotton Yarns"
+                src="/images/yarn_balls_pastel.jpg"
+                alt="Organic Micro-Denier Yarn Balls"
                 className={styles.secondaryImg}
               />
             </div>
