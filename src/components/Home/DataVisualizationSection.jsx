@@ -1,6 +1,23 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import {
+  PieChart,
+  Pie,
+  Cell,
+  Tooltip,
+  ResponsiveContainer,
+  BarChart,
+  Bar,
+  XAxis,
+  YAxis,
+  CartesianGrid,
+  Radar,
+  RadarChart,
+  PolarGrid,
+  PolarAngleAxis,
+  PolarRadiusAxis,
+} from 'recharts';
+import {
   FaRecycle,
   FaGlobe,
   FaBuilding,
@@ -18,6 +35,12 @@ import {
   FaSync,
   FaProjectDiagram,
   FaTruckLoading,
+  FaArrowRight,
+  FaFlask,
+  FaTint,
+  FaTree,
+  FaCheckDouble,
+  FaAward,
 } from 'react-icons/fa';
 import { SectionTitle } from '../Common/SectionTitle';
 import { GridBackground } from '../Common/GridBackground';
@@ -25,7 +48,13 @@ import { AnimatedCounter } from '../Common/AnimatedCounter';
 import styles from './DataVisualizationSection.module.css';
 
 export const DataVisualizationSection = () => {
-  // 1. KPI Cards Data
+  // Reusable motion viewport config for re-animating on scroll up and down
+  const scrollAnim = {
+    once: false,
+    amount: 0.2,
+  };
+
+  // SECTION 1: GLOBAL IMPACT KPI CARDS
   const kpis = [
     { target: 50000, suffix: '+', label: 'Tons Recycled', icon: <FaRecycle /> },
     { target: 25, suffix: '+', label: 'Countries Served', icon: <FaGlobe /> },
@@ -34,43 +63,7 @@ export const DataVisualizationSection = () => {
     { target: 100, suffix: '%', label: 'Pre-Consumer Waste', icon: <FaCheckCircle /> },
   ];
 
-  // 2. Product Portfolio Doughnut Data
-  const portfolioData = [
-    { label: 'Recycled Fibres', pct: 35, color: '#D9B65D' },
-    { label: 'Recycled Yarns', pct: 40, color: '#1B7F5B' },
-    { label: 'Recycled Fabrics', pct: 25, color: '#DDF5E5' },
-  ];
-
-  // 3. Application Industries Horizontal Bar Data
-  const applications = [
-    { name: 'Fashion Apparel', val: 88 },
-    { name: 'Home Textiles', val: 76 },
-    { name: 'Industrial Textiles', val: 65 },
-    { name: 'Sportswear', val: 82 },
-    { name: 'Children Wear', val: 58 },
-    { name: 'Accessories', val: 45 },
-  ];
-
-  // 4. Sustainability Impact 4 Progress Rings
-  const sustainRings = [
-    { label: 'Water Saving', pct: 82, icon: <FaWater /> },
-    { label: 'Waste Recovery', pct: 95, icon: <FaLeaf /> },
-    { label: 'Energy Efficiency', pct: 76, icon: <FaBolt /> },
-    { label: 'Carbon Reduction', pct: 68, icon: <FaCloudSun /> },
-  ];
-
-  // 5. Recycling Process Flow Steps
-  const processSteps = [
-    { num: '01', title: 'Waste Sourcing', icon: <FaRecycle /> },
-    { num: '02', title: 'Sorting Audit', icon: <FaFilter /> },
-    { num: '03', title: 'Fibre Recovery', icon: <FaCogs /> },
-    { num: '04', title: 'Fibre Alignment', icon: <FaWind /> },
-    { num: '05', title: 'Yarn Spinning', icon: <FaSync /> },
-    { num: '06', title: 'Fabric Weaving', icon: <FaProjectDiagram /> },
-    { num: '07', title: 'Global Delivery', icon: <FaTruckLoading /> },
-  ];
-
-  // 6. Global Sourcing Pins
+  // SECTION 2 & 3: COUNTRIES SERVED & SOURCING NETWORK
   const globalPins = [
     { country: 'India', role: '500,000 Sq. Ft. Primary Eco Complex' },
     { country: 'Vietnam', role: 'Apparel Spinning Partner Hub' },
@@ -80,21 +73,77 @@ export const DataVisualizationSection = () => {
     { country: 'Central America', role: 'Nearshoring Apparel Supply Chain' },
   ];
 
-  // 7. Manufacturing Capacity Vertical Bars
-  const capacities = [
-    { label: 'Recycled Fibres', val: '20K Tons', pct: 100 },
-    { label: 'Recycled Yarns', val: '18K Tons', pct: 90 },
-    { label: 'Recycled Fabrics', val: '12K Tons', pct: 60 },
+  // SECTION 4: CIRCULAR MANUFACTURING FLOW (8 STAGES)
+  const processSteps = [
+    { num: '01', title: 'Pre-Consumer Waste', desc: 'Garment cutting waste collected ethically.', icon: <FaRecycle /> },
+    { num: '02', title: 'Sorting Audit', desc: 'Precision shade & composition inspection.', icon: <FaFilter /> },
+    { num: '03', title: 'Fibre Recovery', desc: 'Mechanical opening without solvents.', icon: <FaCogs /> },
+    { num: '04', title: 'Fibre Alignment', desc: 'Micro-denier carding & drafting.', icon: <FaWind /> },
+    { num: '05', title: 'Yarn Manufacturing', desc: 'Swiss Rieter ring-spinning lines.', icon: <FaSync /> },
+    { num: '06', title: 'Fabric Production', desc: 'Waterless dope-dyed weaving.', icon: <FaProjectDiagram /> },
+    { num: '07', title: 'Quality Inspection', desc: 'Uster spectrophotometric lab tests.', icon: <FaFlask /> },
+    { num: '08', title: 'Global Delivery', desc: 'Exported across 45+ international markets.', icon: <FaTruckLoading /> },
   ];
 
-  // 9. Why Avantee Infographics
-  const whyInfographics = [
-    { badge: '100%', title: 'Quality Checked', desc: 'Online capacitive Uster analytical labs for purity & tensile strength.' },
-    { badge: '24/7', title: 'Continuous Production', desc: 'Operating on Swiss Rieter & German Trützschler automated lines.' },
-    { badge: '25+', title: 'Export Destinations', desc: 'Supplying GRS-certified materials across 45+ international markets.' },
-    { badge: 'ECO', title: 'Integrated Ecosystem', desc: 'Complete zero-waste mechanical recycling from staple to finished fabric.' },
-    { badge: '100%', title: 'Global Supply', desc: 'Guaranteed supply chain consistency and transparent GRS auditing.' },
-    { badge: '4.0', title: 'Advanced Machinery', desc: 'Zero-water dope-dyeing masterbatch processes reducing carbon emissions.' },
+  // SECTION 5: PRODUCT MIX DOUGHNUT DATA (Recharts)
+  const productMixData = [
+    { name: 'Recycled Yarns', value: 40, color: '#1B7F5B' },
+    { name: 'Recycled Fibres', value: 35, color: '#D9B65D' },
+    { name: 'Recycled Fabrics', value: 25, color: '#DDF5E5' },
+  ];
+
+  // SECTION 6: MANUFACTURING CAPACITY BAR CHART DATA (Recharts)
+  const capacityData = [
+    { category: 'Fibres', tons: 20 },
+    { category: 'Yarns', tons: 18 },
+    { category: 'Fabrics', tons: 12 },
+  ];
+
+  // SECTION 7: WATER & ENVIRONMENTAL CONSERVATION RINGS
+  const sustainRings = [
+    { label: 'Water Saved', pct: 82, icon: <FaWater /> },
+    { label: 'Waste Recovery', pct: 95, icon: <FaLeaf /> },
+    { label: 'Energy Saved', pct: 76, icon: <FaBolt /> },
+    { label: 'Carbon Reduction', pct: 68, icon: <FaCloudSun /> },
+  ];
+
+  // SECTION 8: ENVIRONMENTAL BENEFITS CARDS
+  const envBenefits = [
+    { title: 'Reduced Water Usage', desc: 'Zero-water dope dyeing eliminates thousands of liters per batch.', icon: <FaTint /> },
+    { title: 'Lower Carbon Footprint', desc: 'Closed-loop mechanical extrusion reduces GHG emissions by 68%.', icon: <FaCloudSun /> },
+    { title: 'Chemical Reduction', desc: 'Pure mechanical fibre opening avoids harsh chemical solvents.', icon: <FaFlask /> },
+    { title: 'Zero Virgin Cotton', desc: 'Directs 100% pre-consumer textile waste away from landfills.', icon: <FaTree /> },
+    { title: 'Circular Manufacturing', desc: 'Complete end-to-end recycling from staple fibre to fabric.', icon: <FaRecycle /> },
+    { title: 'Reusable Resources', desc: 'Engineered for high tenacity across endless recycling loops.', icon: <FaCheckDouble /> },
+  ];
+
+  // SECTION 9: QUALITY CONTROL RADAR CHART DATA (Recharts)
+  const radarData = [
+    { subject: 'Strength', score: 95 },
+    { subject: 'Durability', score: 92 },
+    { subject: 'Colour Consistency', score: 98 },
+    { subject: 'Eco Score', score: 100 },
+    { subject: 'Performance', score: 90 },
+    { subject: 'Quality', score: 99 },
+  ];
+
+  // SECTION 10: APPLICATION INDUSTRIES (Horizontal Bar Data)
+  const applications = [
+    { name: 'Fashion Apparel', val: 88 },
+    { name: 'Home Textiles', val: 76 },
+    { name: 'Industrial Textiles', val: 65 },
+    { name: 'Sportswear', val: 82 },
+    { name: 'Children Wear', val: 58 },
+    { name: 'Accessories', val: 45 },
+  ];
+
+  // SECTION 12: PREMIUM KPI STRIP DATA
+  const stripStats = [
+    { num: 50000, suffix: '+', label: 'Recycled Materials (Tons)' },
+    { num: 500, suffix: '+', label: 'Happy Customers' },
+    { num: 25, suffix: '+', label: 'Global Destinations' },
+    { num: 100, suffix: '%', label: 'Quality Assurance' },
+    { num: 25, suffix: '+', label: 'Years Experience' },
   ];
 
   return (
@@ -102,16 +151,16 @@ export const DataVisualizationSection = () => {
       <GridBackground variant="blueprint" dark={true} opacity={0.08} />
 
       <div className="container" style={{ position: 'relative', zIndex: 3 }}>
-        {/* SECTION HEADER */}
+        {/* HEADER */}
         <div className={styles.sectionHeader}>
           <SectionTitle
             label="MANUFACTURING & SUSTAINABILITY DATA"
             title="Quantifiable Excellence & Global Impact"
-            subtitle="Explore our real-time metrics across production capacity, circular waste recovery, and global distribution logistics."
+            subtitle="Explore our interactive production charts, circular waste recovery metrics, and global logistics network."
           />
         </div>
 
-        {/* SECTION 1: OUR GLOBAL IMPACT (5 KPI CARDS) */}
+        {/* SECTION 1: GLOBAL IMPACT KPI CARDS */}
         <div className={styles.kpiGrid}>
           {kpis.map((k, idx) => (
             <motion.div
@@ -119,7 +168,7 @@ export const DataVisualizationSection = () => {
               className={`${styles.glassCard} ${styles.kpiCard}`}
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: false }}
+              viewport={scrollAnim}
               transition={{ delay: idx * 0.1 }}
               whileHover={{ y: -6 }}
             >
@@ -132,59 +181,119 @@ export const DataVisualizationSection = () => {
           ))}
         </div>
 
-        {/* SECTION 2 & 8: CHARTS DUAL ROW (Portfolio & Capacity) */}
+        {/* SECTION 2 & 3: INTERACTIVE WORLD MAP & SOURCING NETWORK */}
+        <div className={styles.mapWrapper}>
+          <SectionTitle
+            label="GLOBAL NETWORK"
+            title="Sourcing & Export Logistics Ecosystem"
+          />
+
+          <div className={styles.mapCard}>
+            <div className={styles.mapPinsGrid}>
+              {globalPins.map((p, idx) => (
+                <motion.div
+                  key={p.country}
+                  className={styles.pinCard}
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={scrollAnim}
+                  transition={{ delay: idx * 0.1 }}
+                >
+                  <div className={styles.pulseDot} />
+                  <div>
+                    <h4 className={styles.countryName}>{p.country}</h4>
+                    <p className={styles.countryRole}>{p.role}</p>
+                  </div>
+                </motion.div>
+              ))}
+            </div>
+
+            {/* SECTION 3: Network Flow Connection Bar */}
+            <div className={styles.networkFlowBar}>
+              <span className={styles.networkNode}>India</span>
+              <FaArrowRight className={styles.networkArrow} />
+              <span className={styles.networkNode}>Vietnam</span>
+              <FaArrowRight className={styles.networkArrow} />
+              <span className={styles.networkNode}>UAE</span>
+              <FaArrowRight className={styles.networkArrow} />
+              <span className={styles.networkNode}>Cambodia</span>
+              <FaArrowRight className={styles.networkArrow} />
+              <span className={styles.networkNode}>USA</span>
+              <FaArrowRight className={styles.networkArrow} />
+              <span className={styles.networkNode}>Central America</span>
+            </div>
+          </div>
+        </div>
+
+        {/* SECTION 4: CIRCULAR MANUFACTURING FLOW */}
+        <div className={styles.processFlowWrapper}>
+          <SectionTitle
+            label="CIRCULAR MANUFACTURING"
+            title="8-Stage Zero-Waste Recycling Flow"
+          />
+
+          <div className={styles.flowGrid}>
+            {processSteps.map((s, idx) => (
+              <motion.div
+                key={s.num}
+                className={styles.flowCard}
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={scrollAnim}
+                transition={{ delay: idx * 0.08 }}
+              >
+                <span className={styles.flowStepNum}>STAGE {s.num}</span>
+                <div className={styles.flowIcon}>{s.icon}</div>
+                <h4 className={styles.flowStepTitle}>{s.title}</h4>
+                <p className={styles.flowStepDesc}>{s.desc}</p>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+
+        {/* SECTION 5 & 6: RECHARTS DOUGHNUT & CAPACITY BAR CHART */}
         <div className={styles.chartsDualRow}>
-          {/* Section 2: Doughnut Chart */}
+          {/* Section 5: Product Mix Doughnut Chart */}
           <motion.div
             className={styles.glassCard}
             initial={{ opacity: 0, x: -40 }}
             whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: false }}
+            viewport={scrollAnim}
             transition={{ duration: 0.6 }}
           >
             <div className={styles.cardSpotlightGlow} />
             <h3 className={styles.chartTitle}>
               <FaChartPie className={styles.chartTitleIcon} />
-              Product Portfolio Distribution
+              Product Portfolio Mix
             </h3>
 
             <div className={styles.doughnutFlex}>
-              <div className={styles.doughnutSvgWrapper}>
-                <svg viewBox="0 0 100 100" width="100%" height="100%">
-                  {/* Fibres 35% */}
-                  <circle
-                    cx="50"
-                    cy="50"
-                    r="38"
-                    fill="none"
-                    stroke="#D9B65D"
-                    strokeWidth="16"
-                    strokeDasharray="83.7 238.7"
-                    strokeDashoffset="0"
-                  />
-                  {/* Yarns 40% */}
-                  <circle
-                    cx="50"
-                    cy="50"
-                    r="38"
-                    fill="none"
-                    stroke="#1B7F5B"
-                    strokeWidth="16"
-                    strokeDasharray="95.5 238.7"
-                    strokeDashoffset="-83.7"
-                  />
-                  {/* Fabrics 25% */}
-                  <circle
-                    cx="50"
-                    cy="50"
-                    r="38"
-                    fill="none"
-                    stroke="#DDF5E5"
-                    strokeWidth="16"
-                    strokeDasharray="59.7 238.7"
-                    strokeDashoffset="-179.2"
-                  />
-                </svg>
+              <div className={styles.doughnutWrapper}>
+                <ResponsiveContainer width="100%" height={220}>
+                  <PieChart>
+                    <Pie
+                      data={productMixData}
+                      cx="50%"
+                      cy="50%"
+                      innerRadius={60}
+                      outerRadius={90}
+                      paddingAngle={5}
+                      dataKey="value"
+                    >
+                      {productMixData.map((entry, index) => (
+                        <Cell key={`cell-${index}`} fill={entry.color} />
+                      ))}
+                    </Pie>
+                    <Tooltip
+                      contentStyle={{
+                        background: '#061A14',
+                        border: '1px solid #D9B65D',
+                        borderRadius: '8px',
+                        color: '#FFF',
+                      }}
+                    />
+                  </PieChart>
+                </ResponsiveContainer>
 
                 <div className={styles.doughnutCenterText}>
                   <span className={styles.centerVal}>100%</span>
@@ -193,65 +302,183 @@ export const DataVisualizationSection = () => {
               </div>
 
               <div className={styles.legendList}>
-                {portfolioData.map((item) => (
-                  <div key={item.label} className={styles.legendItem}>
+                {productMixData.map((item) => (
+                  <div key={item.name} className={styles.legendItem}>
                     <span
                       className={styles.legendDot}
                       style={{ background: item.color }}
                     />
-                    <span>{item.label}</span>
-                    <span className={styles.legendPct}>{item.pct}%</span>
+                    <span>{item.name}</span>
+                    <span className={styles.legendPct}>{item.value}%</span>
                   </div>
                 ))}
               </div>
             </div>
           </motion.div>
 
-          {/* Section 8: Vertical Bar Chart (Capacity) */}
+          {/* Section 6: Manufacturing Capacity Bar Chart */}
           <motion.div
             className={styles.glassCard}
             initial={{ opacity: 0, x: 40 }}
             whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: false }}
+            viewport={scrollAnim}
             transition={{ duration: 0.6 }}
           >
             <div className={styles.cardSpotlightGlow} />
             <h3 className={styles.chartTitle}>
               <FaIndustry className={styles.chartTitleIcon} />
-              Annual Manufacturing Capacity
+              Annual Capacity (K Tons)
             </h3>
 
-            <div className={styles.vertBarContainer}>
-              {capacities.map((c) => (
-                <div key={c.label} className={styles.vertCol}>
-                  <span className={styles.vertVal}>{c.val}</span>
-                  <div className={styles.vertBarTrack}>
-                    <motion.div
-                      className={styles.vertBarFill}
-                      initial={{ height: 0 }}
-                      whileInView={{ height: `${c.pct}%` }}
-                      viewport={{ once: false }}
-                      transition={{ duration: 1, ease: 'easeOut' }}
-                    />
-                  </div>
-                  <span className={styles.vertLabel}>{c.label}</span>
-                </div>
-              ))}
-            </div>
+            <ResponsiveContainer width="100%" height={220}>
+              <BarChart data={capacityData} margin={{ top: 20, right: 20, left: -10, bottom: 5 }}>
+                <CartesianGrid strokeDasharray="3 3" stroke="rgba(255, 255, 255, 0.1)" />
+                <XAxis dataKey="category" stroke="#DDF5E5" />
+                <YAxis stroke="#DDF5E5" />
+                <Tooltip
+                  contentStyle={{
+                    background: '#061A14',
+                    border: '1px solid #D9B65D',
+                    borderRadius: '8px',
+                    color: '#FFF',
+                  }}
+                />
+                <Bar dataKey="tons" fill="url(#barGradient)" radius={[8, 8, 0, 0]} />
+                <defs>
+                  <linearGradient id="barGradient" x1="0" y1="0" x2="0" y2="1">
+                    <stop offset="0%" stopColor="#D9B65D" />
+                    <stop offset="100%" stopColor="#1B7F5B" />
+                  </linearGradient>
+                </defs>
+              </BarChart>
+            </ResponsiveContainer>
           </motion.div>
         </div>
 
-        {/* SECTION 3: APPLICATION INDUSTRIES (Horizontal Bar Chart) */}
+        {/* SECTION 7 & 9: WATER CONSERVATION RINGS & QUALITY RADAR */}
+        <div className={styles.chartsDualRow}>
+          {/* Section 7: Water & Sustainability Circular Rings */}
+          <motion.div
+            className={styles.glassCard}
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={scrollAnim}
+            transition={{ duration: 0.6 }}
+          >
+            <div className={styles.cardSpotlightGlow} />
+            <h3 className={styles.chartTitle}>
+              <FaWater className={styles.chartTitleIcon} />
+              Resource Conservation Savings
+            </h3>
+
+            <div className={styles.sustainGrid} style={{ gridTemplateColumns: 'repeat(2, 1fr)', marginBottom: 0 }}>
+              {sustainRings.map((ring) => {
+                const circumference = 2 * Math.PI * 40;
+                const strokeDashoffset = circumference - (ring.pct / 100) * circumference;
+
+                return (
+                  <div key={ring.label} className={styles.ringCard} style={{ padding: '16px 10px' }}>
+                    <div className={styles.ringSvgWrapper} style={{ width: '100px', height: '100px', marginBottom: '10px' }}>
+                      <svg viewBox="0 0 100 100" width="100%" height="100%">
+                        <circle cx="50" cy="50" r="40" fill="none" stroke="rgba(255, 255, 255, 0.08)" strokeWidth="8" />
+                        <motion.circle
+                          cx="50"
+                          cy="50"
+                          r="40"
+                          fill="none"
+                          stroke="#D9B65D"
+                          strokeWidth="8"
+                          strokeDasharray={circumference}
+                          initial={{ strokeDashoffset: circumference }}
+                          whileInView={{ strokeDashoffset: strokeDashoffset }}
+                          viewport={scrollAnim}
+                          transition={{ duration: 1.4, ease: 'easeOut' }}
+                          strokeLinecap="round"
+                        />
+                      </svg>
+                      <div className={styles.ringCenterText} style={{ fontSize: '1.2rem' }}>{ring.pct}%</div>
+                    </div>
+                    <h4 className={styles.ringTitle} style={{ fontSize: '0.85rem' }}>{ring.label}</h4>
+                  </div>
+                );
+              })}
+            </div>
+          </motion.div>
+
+          {/* Section 9: Quality Control Radar Chart */}
+          <motion.div
+            className={styles.glassCard}
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={scrollAnim}
+            transition={{ duration: 0.6, delay: 0.2 }}
+          >
+            <div className={styles.cardSpotlightGlow} />
+            <h3 className={styles.chartTitle}>
+              <FaAward className={styles.chartTitleIcon} />
+              Quality Benchmarks (Uster Lab Audit)
+            </h3>
+
+            <ResponsiveContainer width="100%" height={230}>
+              <RadarChart cx="50%" cy="50%" outerRadius="75%" data={radarData}>
+                <PolarGrid stroke="rgba(255, 255, 255, 0.15)" />
+                <PolarAngleAxis dataKey="subject" stroke="#DDF5E5" tick={{ fontSize: 11 }} />
+                <PolarRadiusAxis angle={30} domain={[0, 100]} stroke="#D9B65D" />
+                <Radar name="Quality Score" dataKey="score" stroke="#D9B65D" fill="#1B7F5B" fillOpacity={0.6} />
+                <Tooltip
+                  contentStyle={{
+                    background: '#061A14',
+                    border: '1px solid #D9B65D',
+                    borderRadius: '8px',
+                    color: '#FFF',
+                  }}
+                />
+              </RadarChart>
+            </ResponsiveContainer>
+          </motion.div>
+        </div>
+
+        {/* SECTION 8: ENVIRONMENTAL BENEFITS INFOGRAPHICS */}
+        <div className={styles.sectionHeader} style={{ marginBottom: '40px' }}>
+          <SectionTitle
+            label="ENVIRONMENTAL ADVANTAGES"
+            title="Sustainable Textile Excellence"
+          />
+        </div>
+
+        <div className={styles.envGrid}>
+          {envBenefits.map((b, idx) => (
+            <motion.div
+              key={b.title}
+              className={`${styles.glassCard} ${styles.envCard}`}
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={scrollAnim}
+              transition={{ delay: idx * 0.1 }}
+              whileHover={{ y: -6 }}
+            >
+              <div className={styles.cardSpotlightGlow} />
+              <div className={styles.envIconBox}>{b.icon}</div>
+              <div>
+                <h4 className={styles.envTitle}>{b.title}</h4>
+                <p className={styles.envDesc}>{b.desc}</p>
+              </div>
+            </motion.div>
+          ))}
+        </div>
+
+        {/* SECTION 10: APPLICATION INDUSTRIES (Horizontal Bar Chart) */}
         <motion.div
-          className={`${styles.glassCard} ${styles.processFlowWrapper}`}
+          className={`${styles.glassCard}`}
+          style={{ marginBottom: '90px' }}
           initial={{ opacity: 0, y: 40 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: false }}
+          viewport={scrollAnim}
           transition={{ duration: 0.6 }}
         >
           <div className={styles.cardSpotlightGlow} />
           <h3 className={styles.chartTitle}>
-            Target Industry Applications Demand (%)
+            Target Industry Applications Share (%)
           </h3>
 
           <div className={styles.horizBarGrid}>
@@ -266,7 +493,7 @@ export const DataVisualizationSection = () => {
                     className={styles.horizFill}
                     initial={{ width: 0 }}
                     whileInView={{ width: `${app.val}%` }}
-                    viewport={{ once: false }}
+                    viewport={scrollAnim}
                     transition={{ duration: 1.2, ease: [0.16, 1, 0.3, 1] }}
                   />
                 </div>
@@ -275,143 +502,25 @@ export const DataVisualizationSection = () => {
           </div>
         </motion.div>
 
-        {/* SECTION 4: SUSTAINABILITY IMPACT (4 CIRCULAR RINGS) */}
-        <div className={styles.sectionHeader} style={{ marginBottom: '40px' }}>
-          <SectionTitle
-            label="SUSTAINABILITY METRICS"
-            title="Environmental Conservation Impact"
-          />
-        </div>
-
-        <div className={styles.sustainGrid}>
-          {sustainRings.map((ring, idx) => {
-            const circumference = 2 * Math.PI * 52;
-            const strokeDashoffset = circumference - (ring.pct / 100) * circumference;
-
-            return (
-              <motion.div
-                key={ring.label}
-                className={`${styles.glassCard} ${styles.ringCard}`}
-                initial={{ opacity: 0, scale: 0.9 }}
-                whileInView={{ opacity: 1, scale: 1 }}
-                viewport={{ once: false }}
-                transition={{ delay: idx * 0.1 }}
-                whileHover={{ y: -6 }}
-              >
-                <div className={styles.cardSpotlightGlow} />
-                <div className={styles.ringSvgWrapper}>
-                  <svg viewBox="0 0 120 120" width="100%" height="100%">
-                    <circle
-                      cx="60"
-                      cy="60"
-                      r="52"
-                      fill="none"
-                      stroke="rgba(255, 255, 255, 0.08)"
-                      strokeWidth="10"
-                    />
-                    <motion.circle
-                      cx="60"
-                      cy="60"
-                      r="52"
-                      fill="none"
-                      stroke="var(--gold-primary)"
-                      strokeWidth="10"
-                      strokeDasharray={circumference}
-                      initial={{ strokeDashoffset: circumference }}
-                      whileInView={{ strokeDashoffset: strokeDashoffset }}
-                      viewport={{ once: false }}
-                      transition={{ duration: 1.4, ease: 'easeOut' }}
-                      strokeLinecap="round"
-                    />
-                  </svg>
-                  <div className={styles.ringCenterText}>{ring.pct}%</div>
+        {/* SECTION 12: PREMIUM KPI STRIP */}
+        <motion.div
+          className={styles.kpiStripWrapper}
+          initial={{ opacity: 0, scale: 0.96 }}
+          whileInView={{ opacity: 1, scale: 1 }}
+          viewport={scrollAnim}
+          transition={{ duration: 0.6 }}
+        >
+          <div className={styles.stripGrid}>
+            {stripStats.map((s) => (
+              <div key={s.label}>
+                <div className={styles.stripVal}>
+                  <AnimatedCounter target={s.num} suffix={s.suffix} />
                 </div>
-                <h4 className={styles.ringTitle}>{ring.label}</h4>
-              </motion.div>
-            );
-          })}
-        </div>
-
-        {/* SECTION 5: RECYCLING PROCESS FLOW */}
-        <div className={styles.processFlowWrapper}>
-          <SectionTitle
-            label="INTEGRATED ECOSYSTEM"
-            title="7-Stage Circular Recycling Journey"
-          />
-
-          <div className={styles.flowRow}>
-            {processSteps.map((s, idx) => (
-              <motion.div
-                key={s.num}
-                className={styles.flowStepCard}
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: false }}
-                transition={{ delay: idx * 0.08 }}
-              >
-                <span className={styles.flowStepNum}>STEP {s.num}</span>
-                <div className={styles.flowIcon}>{s.icon}</div>
-                <div className={styles.flowStepTitle}>{s.title}</div>
-              </motion.div>
+                <div className={styles.stripLabel}>{s.label}</div>
+              </div>
             ))}
           </div>
-        </div>
-
-        {/* SECTION 6: GLOBAL SOURCING WORLD MAP & PINS */}
-        <div className={styles.mapWrapper}>
-          <SectionTitle
-            label="GLOBAL SUPPLY NETWORK"
-            title="Worldwide Production & Export Presence"
-          />
-
-          <div className={styles.mapCard}>
-            <div className={styles.pinsGrid}>
-              {globalPins.map((p, idx) => (
-                <motion.div
-                  key={p.country}
-                  className={styles.pinCard}
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: false }}
-                  transition={{ delay: idx * 0.1 }}
-                >
-                  <div className={styles.pulseCircle} />
-                  <div>
-                    <h4 className={styles.countryName}>{p.country}</h4>
-                    <p className={styles.countryRole}>{p.role}</p>
-                  </div>
-                </motion.div>
-              ))}
-            </div>
-          </div>
-        </div>
-
-        {/* SECTION 7: QUALITY RADAR & SECTION 9: WHY AVANTEE */}
-        <div className={styles.sectionHeader} style={{ marginBottom: '40px' }}>
-          <SectionTitle
-            label="WHY AVANTEE"
-            title="Unrivalled Manufacturing Benchmarks"
-          />
-        </div>
-
-        <div className={styles.whyInfographicGrid}>
-          {whyInfographics.map((info, idx) => (
-            <motion.div
-              key={info.title}
-              className={`${styles.glassCard} ${styles.infoCard}`}
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: false }}
-              transition={{ delay: idx * 0.1 }}
-              whileHover={{ y: -6 }}
-            >
-              <div className={styles.cardSpotlightGlow} />
-              <div className={styles.infoBadge}>{info.badge}</div>
-              <h4 className={styles.infoTitle}>{info.title}</h4>
-              <p className={styles.infoDesc}>{info.desc}</p>
-            </motion.div>
-          ))}
-        </div>
+        </motion.div>
       </div>
     </section>
   );
