@@ -6,6 +6,7 @@ import { RecyclingStorytellingSection } from '../components/Home/RecyclingStoryt
 import { ProductsShowcaseSection } from '../components/Home/ProductsShowcaseSection';
 import { InteractiveEarthSection } from '../components/Home/InteractiveEarthSection';
 import { GlobalNetworkMap } from '../components/Home/GlobalNetworkMap';
+import { DataVisualizationSection } from '../components/Home/DataVisualizationSection';
 import { TestimonialsSection } from '../components/Home/TestimonialsSection';
 import { PartnersLogos } from '../components/Home/PartnersLogos';
 
@@ -17,6 +18,7 @@ export const HomePage = () => {
       <AboutPreviewSection />
       <RecyclingStorytellingSection />
       <ProductsShowcaseSection />
+      <DataVisualizationSection />
       <InteractiveEarthSection />
       <GlobalNetworkMap />
       <TestimonialsSection />
